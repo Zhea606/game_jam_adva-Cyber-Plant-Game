@@ -1,11 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementPLayer : MonoBehaviour
 {
-    [SerializeField] private float velocidadMovimiento;
-    [SerializeField] private Vector2 direccion;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private Vector2 direction;
 
     private Rigidbody2D rb2D;
 
@@ -16,11 +17,13 @@ public class MovementPLayer : MonoBehaviour
 
     private void Update()
     {
-        direccion = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
     }
 
     private void FixedUpdate()
     {
-        rb2D.MovePosition(rb2D.position + direccion * velocidadMovimiento * Time.fixedDeltaTime);
+        rb2D.MovePosition(rb2D.position + direction * movementSpeed * Time.fixedDeltaTime);
     }
+    
+   
 }
