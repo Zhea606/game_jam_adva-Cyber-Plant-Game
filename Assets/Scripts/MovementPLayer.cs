@@ -7,7 +7,8 @@ public class MovementPLayer : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private Vector2 direction;
-
+    
+    public bool isHittable = true;
     private Rigidbody2D rb2D;
 
     private void Start()
@@ -25,5 +26,24 @@ public class MovementPLayer : MonoBehaviour
         rb2D.MovePosition(rb2D.position + direction * movementSpeed * Time.fixedDeltaTime);
     }
     
-   
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Box"))
+        {
+            isHittable = false;
+            Debug.Log("Player bool false");
+        } 
+    }
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Box"))
+        {
+            isHittable = true;
+            Debug.Log("Player bool true");
+        } 
+    }
+    
+    
 }
