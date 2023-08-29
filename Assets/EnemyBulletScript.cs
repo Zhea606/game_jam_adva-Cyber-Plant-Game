@@ -12,7 +12,6 @@ public class EnemyBulletScript : MonoBehaviour
     private Rigidbody2D rb;  
     private float timer;
     
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,8 +41,18 @@ public class EnemyBulletScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<playerHealth>().health -= damage;
-            Destroy(gameObject);
+            if (player.GetComponent<MovementPLayer>().isHittable)
+            {
+                other.gameObject.GetComponent<playerHealth>().health -= damage;
+                Destroy(gameObject);
+            }
+        }
+
+        if (other.gameObject.CompareTag("Box"))
+        {
+           Debug.Log("Banana choca contra caja");
+           
+           // Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>(),GameObject.FindGameObjectWithTag("Bullet").GetComponent<Collider2D>());
         }
         
     }
