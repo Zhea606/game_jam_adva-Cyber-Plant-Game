@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Box
   - Bullet
+  - Piece
   layers:
   - Default
   - TransparentFX
@@ -41,6 +42,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor
+    uniqueID: 1681982211
+    locked: 0
+  - name: Pieces
+    uniqueID: 2586052541
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sparks
+    uniqueID: 136158431
     locked: 0

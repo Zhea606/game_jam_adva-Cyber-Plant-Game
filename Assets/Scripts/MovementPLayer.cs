@@ -11,14 +11,47 @@ public class MovementPLayer : MonoBehaviour
     public bool isHittable = true;
     private Rigidbody2D rb2D;
 
+    private float movimientoX;
+    private float movimientoY;
+
+    
+    private Animator anim;
+
     private void Start()
     {
+        anim = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        movimientoX = Input.GetAxisRaw("Horizontal");
+        movimientoY = Input.GetAxisRaw("Vertical");
+
+        anim.SetFloat("MovementX", movimientoX);
+        anim.SetFloat("MovementY", movimientoY);
+
+        if(movimientoX !=0 || movimientoY !=0 )
+        {
+            anim.SetFloat("UltimoX",movimientoX);
+            anim.SetFloat("UltimoY",movimientoY);
+        }
+        direction = new Vector2(movimientoX, movimientoY).normalized;
+
+        
+        
+        
+        //////
+        // anim.SetBool("goUp", Input.GetButtonDown("Up"));
+        // if(Input.GetButtonDown("Up"))
+        // {
+        //     anim.Play("player up");
+        // }
+        // anim.SetBool("goDown", Input.GetButtonDown("Down"));
+        // anim.SetBool("goRight", Input.GetKey(KeyCode.D));
+        // anim.SetBool("goLeft", Input.GetKey(KeyCode.A));
+
+        // direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
     }
 
     private void FixedUpdate()
@@ -32,7 +65,6 @@ public class MovementPLayer : MonoBehaviour
         if (collision.CompareTag("Box"))
         {
             isHittable = false;
-            Debug.Log("Player bool false");
         } 
     }
     
@@ -41,7 +73,6 @@ public class MovementPLayer : MonoBehaviour
         if (collision.CompareTag("Box"))
         {
             isHittable = true;
-            Debug.Log("Player bool true");
         } 
     }
     
