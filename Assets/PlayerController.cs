@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // public GameObject player;
-    // public bool isHittable = true;
-    //
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.CompareTag("Box"))
-    //     {
-    //         isHittable = false;
-    //
-    //         // Debug.Log("Player escondido");
-    //     }
-    // }
+        private Animator anim;
+
+        void Start()
+        {
+            anim = GetComponent<Animator>();
+        }
+
+        void Update()
+        {
+            // Set the boolean parameter "IsWalking" to trigger the walk animation.
+            // bool goUp = Input.GetKey(KeyCode.W); 
+            // Replace with your condition.
+            // anim.SetBool("goUp", goUp);
+        }
+    
 }

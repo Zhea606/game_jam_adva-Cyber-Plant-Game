@@ -37,23 +37,15 @@ public class EnemyBulletScript : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (player.GetComponent<MovementPLayer>().isHittable)
             {
-                other.gameObject.GetComponent<playerHealth>().health -= damage;
+                collision.gameObject.GetComponent<playerHealth>().health -= damage;
                 Destroy(gameObject);
             }
-        }
-
-        if (other.gameObject.CompareTag("Box"))
-        {
-           Debug.Log("Banana choca contra caja");
-           
-           // Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>(),GameObject.FindGameObjectWithTag("Bullet").GetComponent<Collider2D>());
-        }
-        
+        }    
     }
 }

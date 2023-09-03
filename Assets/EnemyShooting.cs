@@ -10,6 +10,8 @@ public class EnemyShooting : MonoBehaviour
     public float xEnd;
     public float yStart;
     public float yEnd;
+    public AudioSource shootingEffect;
+
     private GameObject player;
     private GameObject enemy;
     private float timer; 
@@ -39,6 +41,7 @@ public class EnemyShooting : MonoBehaviour
             ((enemy.transform.position.y < yStart && enemy.transform.position.y > yEnd) || 
             (enemy.transform.position.x < xStart && enemy.transform.position.x > xEnd)))
         {
+            shootingEffect.Play();
             Instantiate(bullet, bulletPos.position, Quaternion.identity);
         }
     }

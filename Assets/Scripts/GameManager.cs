@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public HUD hud;
-    public GameObject pauseUI;
+    public GameObject pauseUI;    
     private int foundPieces = 0;
 
     public static bool gameIsPaused;

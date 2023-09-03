@@ -6,11 +6,14 @@ using UnityEngine;
 
 public class piecesPickupables : MonoBehaviour
 {
+    public AudioSource pieceEffect;
     private void OnTriggerEnter2D(Collider2D other)
     {
-         
-        if (other.gameObject.CompareTag("Player"))
+        Debug.Log(gameObject.tag);
+        Debug.Log(other.gameObject.tag);
+        if (gameObject.CompareTag("Piece") && other.CompareTag("Player"))
         {
+            pieceEffect.Play();
             GameManager.Instance.ObjectFind();
             Destroy(this.gameObject);
         }
